@@ -1,0 +1,8 @@
+using UnityEngine;
+
+public class NPC_LOCALRecruitmentHandler : DEBUGMonoBehaviour
+{
+    // LOCAL DATA ONLY //
+    // SYNCING DATA ACROSS NETWORK MEANS PLAYERS CAN BENEFIT FROM OPPONANTS CORRUPTION ATTEMPTS //
+
+}

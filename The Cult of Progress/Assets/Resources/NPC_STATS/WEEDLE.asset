@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf57e7389df6f214eaec76c9ec7f2b4f, type: 3}
+  m_Name: WEEDLE
+  m_EditorClassIdentifier: 
+  STAT_characterName: Weedle
+  STAT_id: 0
+  STAT_home: 0
+  STAT_willpower: 1
+  STAT_devotionlessness: 1
+  STAT_innocence: 1
+  STAT_startRESDomination: 0
+  STAT_startRESEnthrallment: 0
+  STAT_startRESCorruption: 0
+  STAT_autoJoinList: 
