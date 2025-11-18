@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PLAYER_Movement : MonoBehaviour
+public class PLAYER_Movement : DEBUGMonoBehaviour
 {
     
     [Header("Movement Settings")]
