@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 using NaughtyAttributes;
-using System.Linq;
 
 public class MAP_LadderPoint : DEBUGMonoBehaviour
 {
@@ -17,7 +16,6 @@ public class MAP_LadderPoint : DEBUGMonoBehaviour
 
     private void OnExitLadderValueChanged()
     {
-        Debug.Log("Runs!");
         SetupLadder();
     }
 
