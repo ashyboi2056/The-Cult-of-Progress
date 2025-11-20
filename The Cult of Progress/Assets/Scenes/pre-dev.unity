@@ -2687,7 +2687,7 @@ GameObject:
   - component: {fileID: 1119476634}
   - component: {fileID: 1119476633}
   m_Layer: 0
-  m_Name: Ref
+  m_Name: Ref Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

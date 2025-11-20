@@ -1,7 +1,7 @@
 using UnityEngine;
 using NaughtyAttributes;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "New NPC", menuName = "NPC++")]
 public class soDATA_NPC_Stats : ScriptableObject
 {
     // INTERNAL DATA //
