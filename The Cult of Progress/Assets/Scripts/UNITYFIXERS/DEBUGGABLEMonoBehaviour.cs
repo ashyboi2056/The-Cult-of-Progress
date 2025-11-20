@@ -4,7 +4,7 @@ using UnityEngine;
 public class DEBUGMonoBehaviour : MonoBehaviour
 {
     //Debug Debugging!
-    [OnValueChanged("DEBUGDisableThis")]
+    [OnValueChanged("DEBUGResetDebugOptions")]
     public bool ShowDebugOptions;
 
     [ShowIf("ShowDebugOptions")]
@@ -33,13 +33,22 @@ public class DEBUGMonoBehaviour : MonoBehaviour
     [SerializeField]
     public bool debug;
 
+    private float value;
+
+    private void DEBUGResetDebugOptions()
+    {
+        debug = false;
+    }
+
     private void DEBUGDisableThis()
     {
         debug = false;
+        ShowDebugOptions = false;
     }
 
     private void DEBUGEnableThis()
     {
         debug = true;
+        ShowDebugOptions = true;
     }
 }

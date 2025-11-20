@@ -6,22 +6,22 @@ public class PLAYER_Health : DEBUGMonoBehaviour
 {
     [SerializeField]
     [OnValueChanged("OnHeadDamage")]
-    private int HP_head = 3;
+    private int HP_head = RULES.RULE_HP_headMaxHP;
     [SerializeField]
     [OnValueChanged("OnBodyDamage")]
-    private int HP_body = 3;
+    private int HP_body = RULES.RULE_HP_bodyMaxHP;
     [SerializeField]
     [OnValueChanged("OnArmsDamage")]
-    private int HP_arms = 3;
+    private int HP_arms = RULES.RULE_HP_armsMaxHP;
     [SerializeField]
     [OnValueChanged("OnLegsDamage")]
-    private int HP_legs = 3;
+    private int HP_legs = RULES.RULE_HP_legsMaxHP;
 
     [Space(5)]
 
     [SerializeField]
     [OnValueChanged("OnSoulDamage")]
-    private int HP_soul = 5;
+    private int HP_soul = RULES.RULE_HP_soulMaxHP;
 
     private void OnHeadDamage()
     {
@@ -51,7 +51,7 @@ public class PLAYER_Health : DEBUGMonoBehaviour
     [Button("Heal All Body Parts!")]
     public void HealAll()
     {
-        Heal(5,BodyPart.All);
+        Heal(1000, BodyPart.All);
     }
 
     public void Heal(int AMOUNT, BodyPart TARGET)

@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf57e7389df6f214eaec76c9ec7f2b4f, type: 3}
   m_Name: WEEDLE
   m_EditorClassIdentifier: 
-  STAT_characterName: Weedle
-  STAT_id: 0
-  STAT_home: 0
-  STAT_willpower: 1
-  STAT_devotionlessness: 1
-  STAT_innocence: 1
-  STAT_startRESDomination: 0
-  STAT_startRESEnthrallment: 0
-  STAT_startRESCorruption: 0
-  STAT_autoJoinList: 
+  soDATA_characterName: Weedle
+  soDATA_id: 1
+  soDATA_home: 1
+  soDATA_intelligence: 1
+  soDATA_charisma: 1
+  soDATA_strength: 1
+  soDATA_innocence: 1
+  soDATA_detachment: 1
+  soDATA_willpower: 1
+  soDATA_startRESCorruption: 0
+  soDATA_startRESEnthrallment: 0
+  soDATA_startRESDomination: 0
+  soDATA_autoJoinList: 

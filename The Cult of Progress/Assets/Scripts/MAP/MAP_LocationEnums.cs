@@ -1,10 +1,12 @@
 public enum MAP_LocationEnums
 {
+    None,
+
     Castle,
     School,
     Lighthouse,
     Library,
     Church,
 
-    Tent
+    SPECIAL_Tent
 }

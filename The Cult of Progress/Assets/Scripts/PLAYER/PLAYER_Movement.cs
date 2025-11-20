@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using NaughtyAttributes;
 
 public class PLAYER_Movement : DEBUGMonoBehaviour
 {
     
     [Header("Movement Settings")]
-    public float moveSpeed = 5f;
+    [ShowNonSerializedField]
+    private float moveSpeed = 5f;
 
     private Vector2 moveInput;
     private Rigidbody2D rb;

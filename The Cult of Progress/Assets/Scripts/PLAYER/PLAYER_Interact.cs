@@ -14,7 +14,12 @@ public class PLAYER_Interact : DEBUGMonoBehaviour
         if (nearestInteractable == null){ return; }
 
         float distance = Vector2.Distance(transform.position, nearestInteractable.transform.position);
-        if (distance <= nearestInteractable.GetInteractRange()){ nearestInteractable.Interact(); }
+        if (distance <= nearestInteractable.GetInteractRange())
+        {
+            hasInteractedThisPress = true;
+
+            nearestInteractable.Interact();
+        }
     }
     
     private INTERACTABLE FindNearestInteractable()

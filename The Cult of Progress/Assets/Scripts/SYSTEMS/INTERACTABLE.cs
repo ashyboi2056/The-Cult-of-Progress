@@ -3,8 +3,10 @@ using UnityEngine.Events;
 
 public class INTERACTABLE : DEBUGMonoBehaviour
 {
-    [SerializeField] private UnityEvent OnInteractEvent;
-    [SerializeField] private float interactRange = 3f;
+    [SerializeField]
+    private UnityEvent OnInteractEvent;
+    [SerializeField]
+    private float interactRange = 3f;
 
     public void Interact()
     {
