@@ -10,25 +10,38 @@ public class NPC_LOCALRecruitmentHandler : DEBUGMonoBehaviour
 
     [Space(10)]
 
-    [SerializeField]
-    private NPC_RuntimeData data;
+    //Actual Data visible in Inspector
+    [SerializeField][Label("Runtime Data")] private NPC_RuntimeData DATA_data;
+
+    //Public Facing Var
+    [HideInInspector] public NPC_RuntimeData data
+    {
+        get
+        {
+            return DATA_data;
+        }
+        private set
+        {
+            DATA_data = value;
+        }
+    }
 
     [Space(10)]
 
-    [SerializeField]
-    private UnityEvent OnRecruitment;
+    [SerializeField] private UnityEvent OnRecruitment;
 
     [SerializeField]
     private NPC_ConversionWindowHandler conversionWindowHandler;
 
+    public void OnInteract()
+    {
+        conversionWindowHandler.SetTargetNPC(this);
+        conversionWindowHandler.OpenPanel();
+    }
+
     private void OnDataChange()
     {
         NPCSetup();
-    }
-
-    public void OnInteract()
-    {
-        conversionWindowHandler.Setup(this);
     }
 
     private void OnIntelligenceChange()
@@ -122,7 +135,7 @@ public class NPC_LOCALRecruitmentHandler : DEBUGMonoBehaviour
 
     private void Recruited()
     {
-        if (debug){ Debug.Log("Recruited " + data.GetData().STAT_characterName + "!"); }
+        if (debug){ Debug.Log("<color=magenta>Recruited " + data.GetData().STAT_characterName + "!</color>"); }
 
         OnRecruitment.Invoke();
     }
@@ -149,9 +162,9 @@ public class NPC_LOCALRecruitmentHandler : DEBUGMonoBehaviour
 
         if (debug)
         {
-            Debug.Log("Dice Roll Corruption: Roll: " + rollResult + " ToBeat: " + data.intelligence);
-            if (rollResult > data.intelligence){ Debug.Log("Success!"); }
-            else { Debug.Log("Failure!"); }
+            Debug.Log("<color=blue>Dice Roll Corruption: Roll: " + rollResult + " ToBeat: " + data.intelligence + "</color>");
+            if (rollResult > data.intelligence){ Debug.Log("<color=green>Success!</color>"); }
+            else { Debug.Log("<color=red>Failure!</color>"); }
         }
 
         if (rollResult > data.intelligence){ return true; }
@@ -166,9 +179,9 @@ public class NPC_LOCALRecruitmentHandler : DEBUGMonoBehaviour
 
         if (debug)
         {
-            Debug.Log("Dice Roll Enthrallment: Roll: " + rollResult + " ToBeat: " + data.charisma);
-            if (rollResult > data.charisma){ Debug.Log("Success!"); }
-            else { Debug.Log("Failure!"); }
+            Debug.Log("<color=green>Dice Roll Enthrallment: Roll: " + rollResult + " ToBeat: " + data.charisma + "</color>");
+            if (rollResult > data.charisma){ Debug.Log("<color=green>Success!</color>"); }
+            else { Debug.Log("<color=red>Failure!</color>"); }
         }
 
         if (rollResult > data.charisma){ return true; }
@@ -183,9 +196,9 @@ public class NPC_LOCALRecruitmentHandler : DEBUGMonoBehaviour
 
         if (debug)
         {
-            Debug.Log("Dice Roll Domination: Roll: " + rollResult + " ToBeat: " + data.strength);
-            if (rollResult > data.strength){ Debug.Log("Success!"); }
-            else { Debug.Log("Failure!"); }
+            Debug.Log("<color=red>Dice Roll Domination: Roll: " + rollResult + " ToBeat: " + data.strength + "</color>");
+            if (rollResult > data.strength){ Debug.Log("<color=green>Success!</color>"); }
+            else { Debug.Log("<color=red>Failure!</color>"); }
         }
 
         if (rollResult > data.strength){ return true; }

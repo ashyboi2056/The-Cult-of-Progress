@@ -11,9 +11,16 @@ public class NPC_RuntimeData : DEBUGMonoBehaviour
     [OnValueChanged("OnDataChange")]
     private soDATA_NPC_Stats data;
 
+    [SerializeField, ReadOnly] public bool hasBeenMet = false;
+
     private void OnDataChange()
     {
         Setup();
+    }
+
+    private void Start()
+    {
+        hasBeenMet = false;
     }
 
     private void Awake()
@@ -58,6 +65,7 @@ public class NPC_RuntimeData : DEBUGMonoBehaviour
         OnRESDominationSetAct += OnRESDominationSet;
     }
 
+    [Button("Reset Character!")]
     private void Setup()
     {
         DATA_intelligence = data.STAT_intelligence;
@@ -79,6 +87,8 @@ public class NPC_RuntimeData : DEBUGMonoBehaviour
     public Action OnIntelligenceSetAct;
     
     //Actual Data visible in Inspector
+    [Space(10)]
+    [Range(0,RULES.RULE_STATS_maxIntelligence)]
     [SerializeField] [Label("Intelligence")] private int DATA_intelligence;
 
     //Public Facing Var
@@ -115,6 +125,7 @@ public class NPC_RuntimeData : DEBUGMonoBehaviour
     public Action OnCharismaSetAct;
     
     //Actual Data visible in Inspector
+    [Range(0,RULES.RULE_STATS_maxCharisma)]
     [SerializeField] [Label("Charisma")] private int DATA_charisma;
 
     //Public Facing Var
@@ -151,6 +162,7 @@ public class NPC_RuntimeData : DEBUGMonoBehaviour
     public Action OnStrengthSetAct;
     
     //Actual Data visible in Inspector
+    [Range(0,RULES.RULE_STATS_maxStrength)]
     [SerializeField] [Label("Strength")] private int DATA_strength;
 
     //Public Facing Var
@@ -187,6 +199,7 @@ public class NPC_RuntimeData : DEBUGMonoBehaviour
     public Action OnInnocenceSetAct;
     
     //Actual Data visible in Inspector
+    [Space(10)]
     [SerializeField] [Label("Innocence")] private int DATA_innocence;
 
     //Public Facing Var
@@ -295,6 +308,7 @@ public class NPC_RuntimeData : DEBUGMonoBehaviour
     public Action OnRESCorruptionSetAct;
     
     //Actual Data visible in Inspector
+    [Space(10)]
     [SerializeField] [Label("RESCorruption")] private int DATA_RESCorruption;
 
     //Public Facing Var

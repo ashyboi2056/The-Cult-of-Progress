@@ -1,10 +1,26 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
+using NaughtyAttributes;
 
 public class PLAYER_Interact : DEBUGMonoBehaviour
 {
+    [OnValueChanged("Setup")]
+    public InputActionAsset inputActionAsset;
+    private InputAction interactAction;
+
     private bool hasInteractedThisPress = false;
+
+    void Awake()
+    {
+        Setup();
+    }
+
+    void Setup()
+    {
+        InputActionMap inputActionMap = inputActionAsset.FindActionMap("Player");
+        interactAction = inputActionMap.FindAction("Interact");
+    }
 
     public void OnInteract(InputValue inputValue)
     {
@@ -36,4 +52,22 @@ public class PLAYER_Interact : DEBUGMonoBehaviour
 
         return nearest;
     }
+
+    private void OnInteractKeyRelease(InputAction.CallbackContext context)
+    {
+        hasInteractedThisPress = false;
+    }
+    
+    private void OnEnable()
+    {
+        interactAction.Enable();
+        interactAction.canceled += OnInteractKeyRelease; // Triggered when key is lifted
+    }
+
+    private void OnDisable()
+    {
+        interactAction.canceled -= OnInteractKeyRelease;
+        interactAction.Disable();
+    }
+
 }
