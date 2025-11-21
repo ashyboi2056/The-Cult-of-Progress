@@ -9,25 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a9263d1c794ff74d83933ca8b3203aa, type: 3}
-  m_Name: Hearty Feast
+  m_Script: {fileID: 11500000, guid: a01d5eee0ff953b489f1e8011b8f5f8b, type: 3}
+  m_Name: Crown
   m_EditorClassIdentifier: 
-  soDATA_itemName: Hearty Feast
+  soDATA_itemName: Crown
   soDATA_home: 1
   soDATA_craftingReq:
     list:
     - Key: 1
       Value: 0
     - Key: 2
-      Value: 10
+      Value: 0
     - Key: 5
-      Value: 0
+      Value: 5
     - Key: 3
-      Value: 0
+      Value: 10
     - Key: 4
-      Value: 0
+      Value: 1
     keyCollision: 0
-  soDATA_icon: {fileID: 21300000, guid: 826dbdc0b72a2a4438a1040b7d3e8933, type: 3}
-  soDATA_isConsumable: 1
-  soDATA_OnUseEFFECTS:
-  - {fileID: 11400000, guid: 4b8312a87e8629640867c33a76e670dc, type: 2}
+  soDATA_icon: {fileID: 21300000, guid: 3cb462a459dbe7641a87b77f50d7e0a7, type: 3}
+  soDATA_OnEquip:
+    m_PersistentCalls:
+      m_Calls: []

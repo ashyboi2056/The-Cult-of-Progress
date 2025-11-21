@@ -44,6 +44,9 @@ TagManager:
   - name: Ladder Points
     uniqueID: 432242645
     locked: 0
+  - name: Items On Floor
+    uniqueID: 3580891671
+    locked: 0
   - name: Player
     uniqueID: 4156619247
     locked: 0

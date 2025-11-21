@@ -1,10 +1,11 @@
 using TMPro;
 using UnityEngine;
 using NaughtyAttributes;
+using System.Collections.Generic;
 
 public class PLAYER_Resources : DEBUGMonoBehaviour
 {
-    private GenericDictionary<Resource,int> resources = RULES.RULE_ECONOMY_startingResources;
+    [SerializeField] private GenericDictionary<Resource,int> resources = RULES.RULE_ECONOMY_startingResources;
 
     [SerializeField] private TextMeshProUGUI booksCounter;
     [SerializeField] private TextMeshProUGUI foodCounter;
@@ -26,8 +27,19 @@ public class PLAYER_Resources : DEBUGMonoBehaviour
     [Button]
     private void Setup()
     {
-        resources = RULES.RULE_ECONOMY_startingResources;
+        ResetToStartingResources();
+
         UpdateCounters();
+    }
+
+    private void ResetToStartingResources()
+    {
+        resources = new GenericDictionary<Resource, int>();
+
+        foreach (var kvp in RULES.RULE_ECONOMY_startingResources)
+        {
+            resources[kvp.Key] = kvp.Value;
+        }
     }
 
     public void AddResource(Resource type, int value)
@@ -76,4 +88,36 @@ public class PLAYER_Resources : DEBUGMonoBehaviour
         goldCounter.text = $"Gold: {Gold}";
         soulsCounter.text = $"Souls: {Souls}";
     }
+
+    // DEBUG TOOLS //
+
+    [Button]
+    [ShowIf("debug")]
+    private void DEBUGGiveOneOfAllResources()
+    {
+        // Assuming resources is Dictionary<string, int>
+        var keys = new List<Resource>(resources.Keys); // Copy keys to avoid modifying during iteration
+        foreach (var key in keys)
+        {
+            resources[key] += 1;
+        }
+
+        UpdateCounters();
+    }
+
+    [Button]
+    [ShowIf("debug")]
+    private void DEBUGTakeOneOfAllResources()
+    {
+        // Assuming resources is Dictionary<string, int>
+        var keys = new List<Resource>(resources.Keys); // Copy keys to avoid modifying during iteration
+        foreach (var key in keys)
+        {
+            resources[key] -= 1;
+        }
+
+        UpdateCounters();
+    }
+
+    ////
 }

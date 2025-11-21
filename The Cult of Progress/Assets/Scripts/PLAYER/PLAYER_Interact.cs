@@ -34,7 +34,15 @@ public class PLAYER_Interact : DEBUGMonoBehaviour
         {
             hasInteractedThisPress = true;
 
-            nearestInteractable.Interact();
+            if (nearestInteractable.GetComponent<ITEM_MAP_ItemDrop>() != null)
+            {
+                ITEM_MAP_ItemDrop itemOnMap = nearestInteractable.GetComponent<ITEM_MAP_ItemDrop>();
+                if (GetComponent<PLAYER_Inventory>().PickUpItem(itemOnMap.item)){ nearestInteractable.Interact(); }
+            }
+            else
+            {
+                nearestInteractable.Interact();
+            }
         }
     }
     

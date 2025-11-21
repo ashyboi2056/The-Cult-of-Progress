@@ -35,7 +35,7 @@ public class RULES
     
     // ECONOMY RULES //
 
-    public static GenericDictionary<Resource,int> RULE_ECONOMY_startingResources = new GenericDictionary<Resource, int>()
+    public static readonly GenericDictionary<Resource,int> RULE_ECONOMY_startingResources = new GenericDictionary<Resource, int>()
     {
         {Resource.Books, 0},
         {Resource.Food, 0},
