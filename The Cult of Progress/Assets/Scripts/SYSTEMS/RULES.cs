@@ -32,4 +32,17 @@ public class RULES
     public const int RULE_STATS_maxMagicka = 5;
 
     ////
+    
+    // ECONOMY RULES //
+
+    public static GenericDictionary<Resource,int> RULE_ECONOMY_startingResources = new GenericDictionary<Resource, int>()
+    {
+        {Resource.Books, 0},
+        {Resource.Food, 0},
+        {Resource.Gold, 0},
+        {Resource.Metal, 0},
+        {Resource.Souls, 0}
+    };
+
+    ////
 }

@@ -327,6 +327,12 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.upscalebaby.generic-serializable-dictionary": {
+      "version": "file:C:/Users/aw317330/Downloads/generic-serializable-dictionary-1.0.2/generic-serializable-dictionary-1.0.2",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
       "depth": 0,
