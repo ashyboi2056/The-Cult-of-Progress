@@ -44,6 +44,9 @@ TagManager:
   - name: Ladder Points
     uniqueID: 432242645
     locked: 0
+  - name: Ritual Points
+    uniqueID: 1669653473
+    locked: 0
   - name: Items On Floor
     uniqueID: 3580891671
     locked: 0

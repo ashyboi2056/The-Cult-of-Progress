@@ -23,7 +23,7 @@ public class UI_ISlot : DEBUGMonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void UpdateSlot()
     {
         var item = inventory.GetItem(slotIndex);
-        iconImage.sprite = item != null ? item.STAT_icon : null;
+        iconImage.sprite = item != null ? item.STAT_sprite : null;
         iconImage.enabled = item != null;
     }
 

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class PLAYER_Resources : DEBUGMonoBehaviour
 {
-    [SerializeField] private GenericDictionary<Resource,int> resources = RULES.RULE_ECONOMY_startingResources;
+    [SerializeField] private GenericDictionary<Resource, int> resources = RULES.RULE_ECONOMY_startingResources;
 
     [SerializeField] private TextMeshProUGUI booksCounter;
     [SerializeField] private TextMeshProUGUI foodCounter;
@@ -18,6 +18,11 @@ public class PLAYER_Resources : DEBUGMonoBehaviour
     [ReadOnly, SerializeField] private int Metal;
     [ReadOnly, SerializeField] private int Gold;
     [ReadOnly, SerializeField] private int Souls;
+
+    [Space(10)]
+
+    [ShowIf("debug")]
+    [SerializeField] private bool DEBUGUnlimitedPayment;
 
     public void Awake()
     {
@@ -44,7 +49,7 @@ public class PLAYER_Resources : DEBUGMonoBehaviour
 
     public void AddResource(Resource type, int value)
     {
-        if (value <= 0){ return; }
+        if (value <= 0) { return; }
 
         resources[type] += value;
         UpdateCounters();
@@ -52,16 +57,29 @@ public class PLAYER_Resources : DEBUGMonoBehaviour
 
     public void TakeResource(Resource type, int value)
     {
-        if (value < 0){ return; }
-        if (!QueryHasResource(type, value)){ return; }
+        if (value < 0) { return; }
+        if (!QueryHasResource(type, value)) { return; }
 
         resources[type] -= value;
         UpdateCounters();
     }
 
+    public void TakeResources(GenericDictionary<Resource, int> reqResources)
+    {
+        if (DEBUGUnlimitedPayment) { return; }
+
+        foreach (Resource key in reqResources.Keys)
+        {
+            if (QueryHasResource(key, reqResources[key])) { TakeResource(key, reqResources[key]); }
+            else { Debug.Log("CRITICAL ERROR at: " + name + ". Resources Taken without Payment!"); }
+
+            continue;
+        }
+    }
+
     public void SetResource(Resource type, int value)
     {
-        if (value < 0){ return; }
+        if (value < 0) { return; }
 
         resources[type] = value;
         UpdateCounters();
@@ -69,8 +87,23 @@ public class PLAYER_Resources : DEBUGMonoBehaviour
 
     public bool QueryHasResource(Resource type, int value)
     {
-        if (resources[type] < value){ return false; }
+        if (DEBUGUnlimitedPayment) { return true; }
 
+        if (resources[type] < value) { return false; }
+
+        return true;
+    }
+
+    public bool QueryHasResources(GenericDictionary<Resource, int> reqResources)
+    {
+        if (DEBUGUnlimitedPayment) { return true; }
+
+        foreach (Resource key in reqResources.Keys)
+        {
+            if (!QueryHasResource(key, reqResources[key])) { return false; }
+
+            continue;
+        }
         return true;
     }
 
@@ -117,6 +150,13 @@ public class PLAYER_Resources : DEBUGMonoBehaviour
         }
 
         UpdateCounters();
+    }
+
+    protected override void DEBUGResetDebugOptions()
+    {
+        base.DEBUGResetDebugOptions();
+
+        DEBUGUnlimitedPayment = false;
     }
 
     ////

@@ -7,13 +7,13 @@ public class soDATA_ITEM_Accessory : soDATA_ITEM
 {
     // INTERNAL DATA //
 
-    [SerializeField] [Label("On Equip Event")] private UnityEvent soDATA_OnEquip = new UnityEvent();
+    [SerializeField] [Label("On Equip Effects")] private soDATA_EFFECT[] soDATA_OnEquipEFFECTS;
 
     ////
     
     // POINTERS //
 
-    public UnityEvent STAT_OnEquip => soDATA_OnEquip;
+    public soDATA_EFFECT[] STAT_OnEquipEFFECTS => soDATA_OnEquipEFFECTS;
 
     ////
 }

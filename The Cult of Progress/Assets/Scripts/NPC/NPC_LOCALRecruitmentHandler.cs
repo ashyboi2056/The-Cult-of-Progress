@@ -31,7 +31,7 @@ public class NPC_LOCALRecruitmentHandler : DEBUGMonoBehaviour
     [SerializeField] private UnityEvent OnRecruitment;
 
     [SerializeField]
-    private NPC_ConversionWindowHandler conversionWindowHandler;
+    private UI_NPC_ConversionWindowHandler conversionWindowHandler;
 
     public void OnInteract()
     {

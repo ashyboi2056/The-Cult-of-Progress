@@ -35,7 +35,7 @@ public class DEBUGMonoBehaviour : MonoBehaviour
 
     private float value;
 
-    private void DEBUGResetDebugOptions()
+    protected virtual void DEBUGResetDebugOptions()
     {
         debug = false;
     }

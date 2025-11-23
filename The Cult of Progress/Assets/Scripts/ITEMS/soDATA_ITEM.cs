@@ -26,8 +26,8 @@ public class soDATA_ITEM : ScriptableObject
 
     [Space(10)]
     
-    [SerializeField, Label("Item Icon")] 
-    private Sprite soDATA_icon; // ✅ Added sprite field
+    [SerializeField, Label("Item Sprite")] 
+    private Sprite soDATA_sprite; // ✅ Added sprite field
 
     ////
 
@@ -36,7 +36,7 @@ public class soDATA_ITEM : ScriptableObject
     public string STAT_itemName => soDATA_itemName;
     public MAP_LocationEnums STAT_home => soDATA_home;
     public GenericDictionary<Resource, int> STAT_craftingReq => soDATA_craftingReq;
-    public Sprite STAT_icon => soDATA_icon; // ✅ Public getter for icon
+    public Sprite STAT_sprite => soDATA_sprite; // ✅ Public getter for sprite
 
     ////
 }

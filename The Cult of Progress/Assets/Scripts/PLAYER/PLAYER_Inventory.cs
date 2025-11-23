@@ -27,8 +27,38 @@ public class PLAYER_Inventory : DEBUGMonoBehaviour
 
     public void TakeItem(int slotIndex)
     {
-        inventory[slotIndex] = null;
+        if (debug) { Debug.Log("Taking Item at: " + slotIndex); }
+
+        bool isItemTaken = false;
+
+        switch (slotIndex)
+        {
+            case 100: //Outfit Slot
+                outfitSlot[0] = null;
+                isItemTaken = true;
+                break;
+            case 200: //Acc 1
+                accessorySlots[0] = null;
+                isItemTaken = true;
+                break;
+            case 201: //Acc 2
+                accessorySlots[1] = null;
+                isItemTaken = true;
+                break;
+            case 202: //Acc 3
+                accessorySlots[2] = null;
+                isItemTaken = true;
+                break;
+        }
+        if (!isItemTaken == true)
+        {
+            inventory[slotIndex] = null;
+            isItemTaken = true;
+        }
+
         UpdateUI();
+
+        if (isItemTaken == false) { Debug.Log("CRITICAL ERROR: Item Taken Attempt but no Item Taken at: " + name + ". With ID: " + slotIndex); }
     }
 
     public void SwapItems(int slotIndex1, int slotIndex2)
@@ -36,7 +66,7 @@ public class PLAYER_Inventory : DEBUGMonoBehaviour
         soDATA_ITEM item1 = GetItem(slotIndex1);
         soDATA_ITEM item2 = GetItem(slotIndex2);
 
-        if (slotIndex1 < 10){ inventory[slotIndex1] = item2; }
+        if (slotIndex1 < 10) { inventory[slotIndex1] = item2; }
         else
         {
             switch (slotIndex1)
@@ -45,18 +75,18 @@ public class PLAYER_Inventory : DEBUGMonoBehaviour
                     outfitSlot[0] = item2;
                     break;
                 case 200: //Acc 1
-                    accessorySlots[0] = item2;
+                    EquipAcc(item2 as soDATA_ITEM_Accessory, 200);
                     break;
                 case 201: //Acc 2
-                    accessorySlots[1] = item2;
+                    EquipAcc(item2 as soDATA_ITEM_Accessory, 201);
                     break;
                 case 202: //Acc 3
-                    accessorySlots[2] = item2;
+                    EquipAcc(item2 as soDATA_ITEM_Accessory, 202);
                     break;
             }
         }
 
-        if (slotIndex2 < 10){ inventory[slotIndex2] = item1; }
+        if (slotIndex2 < 10) { inventory[slotIndex2] = item1; }
         else
         {
             switch (slotIndex2)
@@ -65,13 +95,13 @@ public class PLAYER_Inventory : DEBUGMonoBehaviour
                     outfitSlot[0] = item1;
                     break;
                 case 200: //Acc 1
-                    accessorySlots[0] = item1;
+                    EquipAcc(item1 as soDATA_ITEM_Accessory, 200);
                     break;
                 case 201: //Acc 2
-                    accessorySlots[1] = item1;
+                    EquipAcc(item1 as soDATA_ITEM_Accessory, 201);
                     break;
                 case 202: //Acc 3
-                    accessorySlots[2] = item1;
+                    EquipAcc(item1 as soDATA_ITEM_Accessory, 202);
                     break;
             }
         }
@@ -81,7 +111,7 @@ public class PLAYER_Inventory : DEBUGMonoBehaviour
     {
         if (QuerySlotEmpty(slotIndex))
         {
-            if (slotIndex < 10){ inventory[slotIndex] = item; }
+            if (slotIndex < 10) { inventory[slotIndex] = item; }
             else
             {
                 switch (slotIndex)
@@ -90,13 +120,13 @@ public class PLAYER_Inventory : DEBUGMonoBehaviour
                         outfitSlot[0] = item;
                         break;
                     case 200: //Acc 1
-                        accessorySlots[0] = item;
+                        EquipAcc(item as soDATA_ITEM_Accessory, 200);
                         break;
                     case 201: //Acc 2
-                        accessorySlots[1] = item;
+                        EquipAcc(item as soDATA_ITEM_Accessory, 201);
                         break;
                     case 202: //Acc 3
-                        accessorySlots[2] = item;
+                        EquipAcc(item as soDATA_ITEM_Accessory, 202);
                         break;
                 }
             }
@@ -127,7 +157,7 @@ public class PLAYER_Inventory : DEBUGMonoBehaviour
 
     public soDATA_ITEM GetItem(int location)
     {
-        if (location < 10){ return inventory[location]; }
+        if (location < 10) { return inventory[location]; }
         else
         {
             switch (location)
@@ -148,29 +178,69 @@ public class PLAYER_Inventory : DEBUGMonoBehaviour
     public bool QuerySlotEmpty(int location)
     {
         if (location < 10)
-        { 
-            if (inventory[location] == null){ return true; }
-            else{ return false; }
+        {
+            if (inventory[location] == null) { return true; }
+            else { return false; }
         }
         else
         {
             switch (location)
             {
                 case 100: //Outfit Slot
-                    if (outfitSlot[0] == null){ return true; }
+                    if (outfitSlot[0] == null) { return true; }
                     return false;
                 case 200: //Acc 1
-                    if (accessorySlots[0] == null){ return true; }
+                    if (accessorySlots[0] == null) { return true; }
                     return false;
                 case 201: //Acc 2
-                    if (accessorySlots[1] == null){ return true; }
+                    if (accessorySlots[1] == null) { return true; }
                     return false;
                 case 202: //Acc 3
-                    if (accessorySlots[2] == null){ return true; }
+                    if (accessorySlots[2] == null) { return true; }
                     return false;
             }
         }
 
         return false;
+    }
+
+    public int LocationIDQueryCanEquipAcc()
+    {
+        if (accessorySlots[0] == null) { return 200; }
+        if (accessorySlots[1] == null) { return 201; }
+        if (accessorySlots[2] == null) { return 202; }
+
+        return -1;
+    }
+
+    public void EquipAcc(soDATA_ITEM_Accessory accItem, int location)
+    {
+        if (accItem == null) { TakeItem(location); }
+        else if (QuerySlotEmpty(location))
+        {
+            switch (location)
+            {
+                case 200: //Acc 1
+                    accessorySlots[0] = accItem;
+                    ApplyACCItemEquipEffects(accItem);
+                    break;
+                case 201: //Acc 2
+                    accessorySlots[1] = accItem;
+                    ApplyACCItemEquipEffects(accItem);
+                    break;
+                case 202: //Acc 3
+                    accessorySlots[2] = accItem;
+                    ApplyACCItemEquipEffects(accItem);
+                    break;
+            }
+
+            UpdateUI();
+        }
+        else { Debug.Log("CRITICAL ERROR: Equipped Item Overrode occupied Slot!"); }
+    }
+
+    private void ApplyACCItemEquipEffects(soDATA_ITEM_Accessory accItem)
+    {
+        foreach (soDATA_EFFECT effect in accItem.STAT_OnEquipEFFECTS) { effect.Apply(); }
     }
 }

@@ -3,7 +3,7 @@ using TMPro;
 using NaughtyAttributes;
 
 [ExecuteAlways]
-public class NPC_ConversionWindowHandler : DEBUGMonoBehaviour
+public class UI_NPC_ConversionWindowHandler : DEBUGMonoBehaviour
 {
     [SerializeField] private PLAYER_CharacterData playerData;
 
