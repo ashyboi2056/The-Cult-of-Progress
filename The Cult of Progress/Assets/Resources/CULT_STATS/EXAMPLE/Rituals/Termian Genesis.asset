@@ -17,4 +17,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3ec2bcfab6a7a674fa54401fb26ec148, type: 2}
   soDATA_reqNPCs: 01000000
   soDATA_OnPerformedEFFECTS:
-  - {fileID: 11400000, guid: 9d0c7408b1d7c5b4182813781c88d035, type: 2}
+  - {fileID: 11400000, guid: 824df2bac4265ad40b4a53003049cb16, type: 2}
