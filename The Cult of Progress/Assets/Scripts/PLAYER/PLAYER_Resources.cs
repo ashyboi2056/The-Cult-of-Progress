@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class PLAYER_Resources : DEBUGMonoBehaviour
 {
-    [SerializeField] private GenericDictionary<Resource, int> resources = RULES.RULE_ECONOMY_startingResources;
+    [SerializeField] private GenericDictionary<Resource, int> resources;
 
     [SerializeField] private TextMeshProUGUI booksCounter;
     [SerializeField] private TextMeshProUGUI foodCounter;
@@ -112,7 +112,7 @@ public class PLAYER_Resources : DEBUGMonoBehaviour
         Books = resources[Resource.Books];
         Food = resources[Resource.Food];
         Metal = resources[Resource.Metal];
-        Gold = resources[Resource.Metal];
+        Gold = resources[Resource.Gold];
         Souls = resources[Resource.Souls];
 
         booksCounter.text = $"Books: {Books}";

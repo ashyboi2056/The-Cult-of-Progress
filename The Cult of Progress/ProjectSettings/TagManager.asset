@@ -44,6 +44,9 @@ TagManager:
   - name: Ladder Points
     uniqueID: 432242645
     locked: 0
+  - name: Spawners
+    uniqueID: 2305387439
+    locked: 0
   - name: Ritual Points
     uniqueID: 1669653473
     locked: 0
@@ -52,6 +55,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 4156619247
+    locked: 0
+  - name: Mini Canvas UI
+    uniqueID: 2738609997
     locked: 0
   - name: UI
     uniqueID: 3949624851

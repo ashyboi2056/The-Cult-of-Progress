@@ -29,10 +29,11 @@ public class PLAYER_CharacterData : DEBUGMonoBehaviour
     public int magicka = RULES.RULE_STATS_startingMagicka;
 
     ////
+    
+    [Space(10)]
 
     // STARTING ACCESSORY DATA CARRIER //
-
-    // STARTINGACC = ACC;
+    public soDATA_ITEM_Accessory startingACC;
 
     ////
     

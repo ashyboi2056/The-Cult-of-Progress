@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "++Heal", menuName = "EFFECT/Heal")]
+[CreateAssetMenu(fileName = "New Heal Effect", menuName = "EFFECT/++Heal")]
 public class HealEffect : soDATA_EFFECT
 {
     [SerializeField] private int amount;

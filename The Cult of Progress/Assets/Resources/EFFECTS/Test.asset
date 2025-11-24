@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35f0eb1681fcf5a42ae2d180b6410e11, type: 3}
-  m_Name: Cult of the Femboy
+  m_Script: {fileID: 11500000, guid: df9ae1ae496af134d967b52bf6499d53, type: 3}
+  m_Name: Test
   m_EditorClassIdentifier: 
-  soDATA_cultName: The Cult of the Femboy
-  soDATA_factionNPCs: 000000000000000000000000

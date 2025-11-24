@@ -1,5 +1,10 @@
 public class RULES
 {
+    /// <summary>
+    /// // STATIC VARS ORDER IN THIS SCRIPT MATTERS!!! ACCESSING LOWER VARS IS IMPOSSIBLE FOR HIGHER VARS AS THEY HAVE NOT 
+    // LOADED YET IF THEY ARE BOTH STATIC AND USED IN INITIALIZATION
+    /// </summary>
+
     // CONVERSION SYSTEM RULES //
 
     public const int RULE_CONVERSION_defaultAttempts = 1;
@@ -44,5 +49,16 @@ public class RULES
         {Resource.Souls, 0}
     };
 
+    private static float baseResourceGenerationTickAdjustment = 1000f;
+    //Per Tick
+    public static readonly GenericDictionary<Resource,float> RULE_ECONOMY_baseResourceGenerationRate = new GenericDictionary<Resource, float>()
+    {
+        {Resource.Books, 2f/baseResourceGenerationTickAdjustment},
+        {Resource.Food, 2f/baseResourceGenerationTickAdjustment},
+        {Resource.Gold, 2f/baseResourceGenerationTickAdjustment},
+        {Resource.Metal, 2f/baseResourceGenerationTickAdjustment},
+        {Resource.Souls, 1f/baseResourceGenerationTickAdjustment}
+    };
+    
     ////
 }

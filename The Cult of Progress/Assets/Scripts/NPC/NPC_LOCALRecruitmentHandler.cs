@@ -138,6 +138,8 @@ public class NPC_LOCALRecruitmentHandler : DEBUGMonoBehaviour
         if (debug){ Debug.Log("<color=magenta>Recruited " + data.GetData().STAT_characterName + "!</color>"); }
 
         OnRecruitment.Invoke();
+
+        FindFirstObjectByType<LOCAL_PLAYER_FLAG>().GetComponent<PLAYER_NPC_RecruitedNPCs>().AddRecruitedNPC(data.GetData().STAT_id);
     }
 
     private void Corrupted()
