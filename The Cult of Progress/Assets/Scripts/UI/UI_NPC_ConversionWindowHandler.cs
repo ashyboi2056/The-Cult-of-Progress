@@ -5,7 +5,7 @@ using NaughtyAttributes;
 [ExecuteAlways]
 public class UI_NPC_ConversionWindowHandler : DEBUGMonoBehaviour
 {
-    [SerializeField] private PLAYER_CharacterData playerData;
+    private PLAYER_CharacterData playerData;
 
     [SerializeField] private UI_Panel myUIPanelScript;
 
@@ -31,6 +31,8 @@ public class UI_NPC_ConversionWindowHandler : DEBUGMonoBehaviour
 
     public void Awake()
     {
+        if (playerData == null){ playerData = FindFirstObjectByType<PLAYER_CharacterData>(); }
+
         if (targetNPCRecruitmentHandler == null){ ClosePanel(); }
         else{ OpenPanel(); }
     }
@@ -73,15 +75,22 @@ public class UI_NPC_ConversionWindowHandler : DEBUGMonoBehaviour
     private void Setdown()
     {
         //Unsubscribe from OnChangeActions
-        targetNPCData.OnInnocenceSetAct -= UpdateStatsCounters;
-        targetNPCData.OnDetachmentSetAct -= UpdateStatsCounters;
-        targetNPCData.OnWillpowerSetAct -= UpdateStatsCounters;
 
-        targetNPCData.OnRESCorruptionSetAct -= UpdateStatsCounters;
-        targetNPCData.OnRESEnthrallmentSetAct -= UpdateStatsCounters;
-        targetNPCData.OnRESDominationSetAct -= UpdateStatsCounters;
+        if (targetNPCData != null)
+        {
+            targetNPCData.OnInnocenceSetAct -= UpdateStatsCounters;
+            targetNPCData.OnDetachmentSetAct -= UpdateStatsCounters;
+            targetNPCData.OnWillpowerSetAct -= UpdateStatsCounters;
 
-        targetNPCRecruitmentHandler = null;
+            targetNPCData.OnRESCorruptionSetAct -= UpdateStatsCounters;
+            targetNPCData.OnRESEnthrallmentSetAct -= UpdateStatsCounters;
+            targetNPCData.OnRESDominationSetAct -= UpdateStatsCounters;
+        }
+
+        if (targetNPCRecruitmentHandler != null)
+        {
+            targetNPCRecruitmentHandler = null;
+        }
 
         nametag.text = "NULL";
     }

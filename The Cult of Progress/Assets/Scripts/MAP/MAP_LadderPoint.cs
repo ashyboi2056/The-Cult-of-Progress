@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using NaughtyAttributes;
+using Fungus;
 
 public class MAP_LadderPoint : DEBUGMonoBehaviour
 {
@@ -10,19 +11,34 @@ public class MAP_LadderPoint : DEBUGMonoBehaviour
     [OnValueChanged("OnExitLadderValueChanged")]
     [SerializeField]
     private bool isExitLadder;
+    [OnValueChanged("OnLinkedLadderValueChanged")]
+    [SerializeField]
+    private bool isLinkedLadder;
 
     [HideIf("isExitLadder")]
     private int entranceLadderID;
+    [ShowIf("isLinkedLadder")]
+    [SerializeField] private GameObject targetLadder;
 
     private void OnExitLadderValueChanged()
     {
+        if (isExitLadder){ isLinkedLadder = false; }
+
+        SetupLadder();
+    }
+    private void OnLinkedLadderValueChanged()
+    {
+        if (isLinkedLadder){ isExitLadder = false; }
+
         SetupLadder();
     }
 
     private void SetupLadder()
     {
+        if (isLinkedLadder){ SetupLinkedLadder(); }
+
         //Is Exit Ladder
-        if (isExitLadder){ SetupExitLadder(); }
+        else if (isExitLadder){ SetupExitLadder(); }
 
         //Is Entrance Ladder
         else
@@ -47,6 +63,13 @@ public class MAP_LadderPoint : DEBUGMonoBehaviour
         entranceLadderID = -1;
     }
 
+    private void SetupLinkedLadder()
+    {
+
+
+        entranceLadderID = -2;
+    }
+
     public MAP_LadderPoint FindMyEntranceLadder()
     {
         if (!isExitLadder){ return null; }
@@ -68,15 +91,16 @@ public class MAP_LadderPoint : DEBUGMonoBehaviour
         if (debug){ Debug.Log(name + "'s ID: " + entranceLadderID); }
     }
 
-    public void TeleportPlayer(GameObject player)
+    public void TeleportPlayer()
     {
         Vector2 targetPosition;
 
         //FIND Target Postion
-        if (isExitLadder){ targetPosition = FindMyEntranceLadder().transform.position; }
+        if (isLinkedLadder){ targetPosition = targetLadder.transform.position; }
+        else if (isExitLadder){ targetPosition = FindMyEntranceLadder().transform.position; }
         else { targetPosition = allExitLadders[entranceLadderID].transform.position; }
 
         //MOVE Player
-        player.transform.position = targetPosition;
+        FindFirstObjectByType<LOCAL_PLAYER_FLAG>().transform.position = targetPosition;
     }
 }

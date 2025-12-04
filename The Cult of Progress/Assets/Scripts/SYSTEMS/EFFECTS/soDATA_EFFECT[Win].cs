@@ -7,6 +7,7 @@ public class WinEffect : soDATA_EFFECT
     public override void Apply(GameObject target = null)
     {
         // Win
-        SceneManager.LoadScene("win");
+        string sourceScene = SceneManager.GetActiveScene().name;
+        DATA_MasterSceneManager.ChangeToScene(sourceScene,"win");
     }
 }

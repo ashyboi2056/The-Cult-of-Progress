@@ -48,6 +48,8 @@ public class UI_CraftingStationWindowHandler : DEBUGMonoBehaviour
         //create new UI and upload Data
         foreach (soDATA_ITEM item in craftingStation.craftables)
         {
+            if (item == null){ if (debug){ Debug.Log("Empty item at: " + name); } continue; } //Empty Item Slot Chcek
+
             SpawnItemCrafterUI(item);
         }
     }

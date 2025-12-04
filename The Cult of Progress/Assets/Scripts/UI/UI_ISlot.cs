@@ -61,15 +61,8 @@ public class UI_ISlot : DEBUGMonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnDrag(PointerEventData eventData)
     {
-        // Convert screen position to local position in the root canvas
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            transform.root as RectTransform,
-            eventData.position,
-            eventData.pressEventCamera,
-            out Vector2 localPos
-        );
-
-        iconImage.rectTransform.localPosition = localPos;
+        
+        //iconImage.rectTransform.anchoredPosition;
     }
 
     public void OnDrop(PointerEventData eventData)

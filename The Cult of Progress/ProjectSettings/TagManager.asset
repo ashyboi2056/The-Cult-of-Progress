@@ -41,6 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Water
+    uniqueID: 1045854691
+    locked: 0
+  - name: Floor
+    uniqueID: 18033411
+    locked: 0
   - name: Ladder Points
     uniqueID: 432242645
     locked: 0
@@ -53,8 +59,14 @@ TagManager:
   - name: Ritual Points
     uniqueID: 1669653473
     locked: 0
+  - name: Wall
+    uniqueID: 3966491001
+    locked: 0
   - name: Items On Floor
     uniqueID: 3580891671
+    locked: 0
+  - name: Characters
+    uniqueID: 2348788943
     locked: 0
   - name: Player
     uniqueID: 4156619247

@@ -3,9 +3,13 @@ using UnityEngine;
 
 public class PLAYER_CharacterData : DEBUGMonoBehaviour
 {
+    // CHARACTER DATA AS IN MAIN SCENE FOR LOCAL REFERENCE ONLY
+
+    public PLAYER_PERSISTANT_DATA player_persistant_data;
+
     public string pcName = "NO NAME";
 
-    // CHOSEN GOD = GOD;
+    public soDATA_CULT_Stats chosenCult;
 
     [Header("WARNING!!!: SLIDER MAX RANGE IS MANUALLY SET IN THIS SCRIPT...")]
     [Header("...IT DOES NOT AUTOMATICALLY SYNC WITH MAX IN RULES!")]
@@ -37,7 +41,7 @@ public class PLAYER_CharacterData : DEBUGMonoBehaviour
 
     ////
     
-    [Button("Reset Character Data!")]
+    [Button("Reset Character Data to System Default!")]
     private void ResetCharacterData()
     {
         pcName = "NO NAME";
@@ -50,5 +54,28 @@ public class PLAYER_CharacterData : DEBUGMonoBehaviour
         magicka = RULES.RULE_STATS_startingMagicka;
 
         QueryShowHiddenStats = false;
+    }
+
+    void Start()
+    {
+        player_persistant_data = FindFirstObjectByType<PlayerPersistantDataContainer>().data;
+
+        SetCharacterData();
+
+        chosenCult = FindFirstObjectByType<PlayerPersistantDataContainer>().cultDataCarrier;
+    }
+
+    void SetCharacterData()
+    {
+        pcName = player_persistant_data.characterName;
+
+        intelligence = player_persistant_data.intelligence;
+        charisma = player_persistant_data.charisma;
+        strength = player_persistant_data.strength;
+
+        GetComponent<PLAYER_Inventory>().PickUpItem(player_persistant_data.startingACC);
+        
+        //
+        //
     }
 }

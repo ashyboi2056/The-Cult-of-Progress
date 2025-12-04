@@ -38,6 +38,12 @@ public class RULES
 
     ////
     
+    // MAP RULES //
+
+    public const int RULE_MAP_locationCount = 1;
+
+    ////
+
     // ECONOMY RULES //
 
     public static readonly GenericDictionary<Resource,int> RULE_ECONOMY_startingResources = new GenericDictionary<Resource, int>()
