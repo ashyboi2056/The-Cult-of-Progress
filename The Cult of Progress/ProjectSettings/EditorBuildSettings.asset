@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/game/main.unity
     guid: 44c99f4b2e65ec84da249e730db61477
   - enabled: 1
+    path: Assets/Scenes/game/conversion_dice_roll.unity
+    guid: 4656fd7789308a546abac89f3ea5695b
+  - enabled: 1
     path: Assets/Scenes/game/win.unity
     guid: 155bd24d5196e4f408ee4506918dd4a6
   m_configObjects:

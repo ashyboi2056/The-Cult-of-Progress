@@ -219,6 +219,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2047590586796227578, guid: 6ddf0cc34c848304abf6b9ae03edccfe, type: 3}
+      propertyPath: removeSceneOnAwake
+      value: conversion_dice_roll
+      objectReference: {fileID: 0}
     - target: {fileID: 3748266237995712860, guid: 6ddf0cc34c848304abf6b9ae03edccfe, type: 3}
       propertyPath: m_Name
       value: CallSceneManager

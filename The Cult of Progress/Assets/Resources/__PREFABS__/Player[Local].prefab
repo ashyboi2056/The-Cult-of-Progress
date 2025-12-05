@@ -570,14 +570,14 @@ MonoBehaviour:
   ShowDebugOptions: 0
   debug: 0
   player_persistant_data:
-    name: 
+    playerName: 
     characterName: 
-    cult: {fileID: 0}
     startingACC: {fileID: 0}
     intelligence: 0
     charisma: 0
     strength: 0
   pcName: NO NAME
+  chosenCult: {fileID: 0}
   intelligence: 1
   charisma: 1
   strength: 1
@@ -1183,7 +1183,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

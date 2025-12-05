@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7761302213831140484
 RectTransform:
   m_ObjectHideFlags: 0
@@ -153,7 +153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &76245019298688645
 RectTransform:
   m_ObjectHideFlags: 0
@@ -289,7 +289,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1983420267355046712
 RectTransform:
   m_ObjectHideFlags: 0
@@ -515,15 +515,15 @@ MonoBehaviour:
   QuerySpawnResources:
     list:
     - Key: 1
-      Value: 1
+      Value: 0
     - Key: 2
-      Value: 1
+      Value: 0
     - Key: 5
-      Value: 1
+      Value: 0
     - Key: 3
-      Value: 1
+      Value: 0
     - Key: 4
-      Value: 1
+      Value: 0
     keyCollision: 0
   storage: {fileID: 1414781074082797290}
   maxPickupDistance: 2
@@ -754,7 +754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7128477521988230099
 RectTransform:
   m_ObjectHideFlags: 0
@@ -890,7 +890,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8973236574668060686
 RectTransform:
   m_ObjectHideFlags: 0

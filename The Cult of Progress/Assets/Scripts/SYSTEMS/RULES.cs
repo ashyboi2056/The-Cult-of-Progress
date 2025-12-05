@@ -8,6 +8,7 @@ public class RULES
     // CONVERSION SYSTEM RULES //
 
     public const int RULE_CONVERSION_defaultAttempts = 1;
+    public const int RULE_CONVERSION_maxStoredAttempts = 6;
 
     ////
 
@@ -43,6 +44,15 @@ public class RULES
     public const int RULE_MAP_locationCount = 1;
 
     ////
+    
+    // UX RULES //
+
+    public const float RULE_UX_diceResultDelay = 2.5f;
+    public const float RULE_UX_diceRandomTorqueMagnitude = 0.00002f;
+    public const float RULE_UX_diceRandomMinForceMagnitude = 0.000001f;
+    public const float RULE_UX_diceRandomMaxForceMagnitude = 0.000005f;
+
+    ////
 
     // ECONOMY RULES //
 
@@ -59,10 +69,10 @@ public class RULES
     //Per Tick
     public static readonly GenericDictionary<Resource,float> RULE_ECONOMY_baseResourceGenerationRate = new GenericDictionary<Resource, float>()
     {
-        {Resource.Books, 2f/baseResourceGenerationTickAdjustment},
-        {Resource.Food, 2f/baseResourceGenerationTickAdjustment},
-        {Resource.Gold, 2f/baseResourceGenerationTickAdjustment},
-        {Resource.Metal, 2f/baseResourceGenerationTickAdjustment},
+        {Resource.Books, 3f/baseResourceGenerationTickAdjustment},
+        {Resource.Food, 4f/baseResourceGenerationTickAdjustment},
+        {Resource.Gold, 3f/baseResourceGenerationTickAdjustment},
+        {Resource.Metal, 4f/baseResourceGenerationTickAdjustment},
         {Resource.Souls, 1f/baseResourceGenerationTickAdjustment}
     };
     

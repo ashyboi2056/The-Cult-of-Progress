@@ -1,6 +1,7 @@
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 public class NPC_LOCALRecruitmentHandler : DEBUGMonoBehaviour
 {
@@ -35,6 +36,8 @@ public class NPC_LOCALRecruitmentHandler : DEBUGMonoBehaviour
     void Awake()
     {
         conversionWindowHandler = FindFirstObjectByType<UI_NPC_ConversionWindowHandler>();
+
+        StartCoroutine(IncrementConversionAttempts());
     }
 
     public void OnInteract()
@@ -58,6 +61,18 @@ public class NPC_LOCALRecruitmentHandler : DEBUGMonoBehaviour
         conversionWindowHandler.UpdateAttemptsCounter(this);
     }
 
+    private IEnumerator IncrementConversionAttempts()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(data.GetData().STAT_conversionAttemptRefreshTime);
+            if (conversionAttempts < RULES.RULE_CONVERSION_maxStoredAttempts){ conversionAttempts++; }
+            if (debug){ Debug.Log($"conversionAttempts increased to {conversionAttempts}"); }
+
+            conversionWindowHandler.UpdateAttemptsCounter(this);
+        }
+    }
+
     public int GetConversionAttempts()
     {
         return conversionAttempts;
@@ -70,12 +85,11 @@ public class NPC_LOCALRecruitmentHandler : DEBUGMonoBehaviour
         UpdateAttemptsCounter();
     }
 
-    public bool Convert(PLAYER_CharacterData playerData, Stance stance)
-    {
-        //Subtract attempt count
-        if (conversionAttempts == 0)
-        {
-            return false;
+    public IEnumerator Convert(PLAYER_CharacterData playerData, Stance stance) {
+        if (debug){ Debug.Log("Converting!"); }
+
+        if (conversionAttempts == 0) {
+            yield break; // no attempts left
         }
         --conversionAttempts;
         UpdateAttemptsCounter();
@@ -85,21 +99,31 @@ public class NPC_LOCALRecruitmentHandler : DEBUGMonoBehaviour
         int dominationTotal = 0;
 
         //Roll D6 per Stat Point for Player
-        for (int intCounter = 0; intCounter < playerData.intelligence; intCounter++)
-        {
-            bool success = TEMPRollCorruptionDice();
-            if (success){ ++corruptionTotal; }
-        }
-        for (int chaCounter = 0; chaCounter < playerData.charisma; chaCounter++)
-        {
-            bool success = TEMPRollEnthrallmentDice();
-            if (success){ ++enthrallmentTotal; }
-        }
-        for (int strCounter = 0; strCounter < playerData.strength; strCounter++)
-        {
-            bool success = TEMPRollDominationDice();
-            if (success){ ++dominationTotal; }
-        }
+        // Wait until all dice have settled
+        yield return StartCoroutine(LOGIC_ConversionDiceManager.RollCoroutine(playerData.intelligence, playerData.charisma, playerData.strength, data.intelligence, data.charisma, data.strength, results => {
+            if (debug){ Debug.Log($"Corruption: {results[0]}, Enthrallment: {results[1]}, Domination: {results[2]}"); }
+
+            corruptionTotal = results[0];
+            enthrallmentTotal = results[1];
+            dominationTotal = results[2];
+        }));
+        /*
+            for (int intCounter = 0; intCounter < playerData.intelligence; intCounter++)
+            {
+                bool success = TEMPRollCorruptionDice();
+                if (success){ ++corruptionTotal; }
+            }
+            for (int chaCounter = 0; chaCounter < playerData.charisma; chaCounter++)
+            {
+                bool success = TEMPRollEnthrallmentDice();
+                if (success){ ++enthrallmentTotal; }
+            }
+            for (int strCounter = 0; strCounter < playerData.strength; strCounter++)
+            {
+                bool success = TEMPRollDominationDice();
+                if (success){ ++dominationTotal; }
+            }
+        */
 
         //Subtract RES
         if (corruptionTotal - data.RESCorruption <= 0){ corruptionTotal = 0; }
@@ -108,7 +132,7 @@ public class NPC_LOCALRecruitmentHandler : DEBUGMonoBehaviour
         if (enthrallmentTotal - data.RESEnthrallment <= 0){ enthrallmentTotal = 0; }
         else { enthrallmentTotal -= data.RESEnthrallment; }
 
-        if (dominationTotal - data.RESDomination <= 0){ data.RESDomination = 0; }
+        if (dominationTotal - data.RESDomination <= 0){ dominationTotal = 0; }
         else { dominationTotal -= data.RESDomination; }
 
         //Subtract Result from inn, det and will
@@ -122,11 +146,7 @@ public class NPC_LOCALRecruitmentHandler : DEBUGMonoBehaviour
         else { data.willpower -= dominationTotal; }
 
         //CheckConverted
-        //Returns false if not converted
         CheckConverted();
-
-        //Query was Performed???
-        return true;
     }
 
     private bool CheckConverted()
@@ -142,6 +162,7 @@ public class NPC_LOCALRecruitmentHandler : DEBUGMonoBehaviour
         if (debug){ Debug.Log("<color=magenta>Recruited " + data.GetData().STAT_characterName + "!</color>"); }
 
         OnRecruitment.Invoke();
+        UI_Panel.CloseAllPanels(); // TEMP FIX
 
         FindFirstObjectByType<LOCAL_PLAYER_FLAG>().GetComponent<PLAYER_NPC_RecruitedNPCs>().AddRecruitedNPC(data.GetData().STAT_id);
     }
@@ -177,7 +198,6 @@ public class NPC_LOCALRecruitmentHandler : DEBUGMonoBehaviour
 
         return false;
     }
-
     //Success or Failure
     private bool TEMPRollEnthrallmentDice()
     {
@@ -194,7 +214,6 @@ public class NPC_LOCALRecruitmentHandler : DEBUGMonoBehaviour
 
         return false;
     }
-
     //Success or Failure
     private bool TEMPRollDominationDice()
     {
@@ -215,5 +234,7 @@ public class NPC_LOCALRecruitmentHandler : DEBUGMonoBehaviour
 
 public enum Stance
 {
-    None
+    Safe,
+    Aggressive,
+    Focused
 }

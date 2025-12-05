@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 
-public class UI_CULT_SelectDropdown : MonoBehaviour
+public class UI_CULT_SelectDropdown : DEBUGMonoBehaviour
 {
     [SerializeField] private TMP_Dropdown dropdown;
 
@@ -33,7 +33,7 @@ public class UI_CULT_SelectDropdown : MonoBehaviour
     private void OnDropdownChanged(int index)
     {
         soDATA_CULT_Stats selectedCult = myAvailableCults[index];
-        Debug.Log("Selected Cult: " + selectedCult.STAT_cultName);
+        if (debug){ Debug.Log("Selected Cult: " + selectedCult.STAT_cultName); }
 
         // Example: apply cult logic
         // e.g. update UI, load rituals, change colors, etc.

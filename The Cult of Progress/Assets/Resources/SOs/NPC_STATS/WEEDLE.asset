@@ -15,13 +15,14 @@ MonoBehaviour:
   soDATA_characterName: Weedle
   soDATA_id: 1
   soDATA_home: 1
-  soDATA_intelligence: 1
-  soDATA_charisma: 1
-  soDATA_strength: 1
-  soDATA_innocence: 1
-  soDATA_detachment: 1
-  soDATA_willpower: 1
+  soDATA_intelligence: 2
+  soDATA_charisma: 3
+  soDATA_strength: 4
+  soDATA_innocence: 6
+  soDATA_detachment: 6
+  soDATA_willpower: 6
   soDATA_startRESCorruption: 0
   soDATA_startRESEnthrallment: 0
-  soDATA_startRESDomination: 0
+  soDATA_startRESDomination: 1
   soDATA_autoJoinList: 
+  soDATA_conversionAttemptRefreshTime: 35

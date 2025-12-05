@@ -18,11 +18,11 @@ public class MAP_LadderPointSpawn : DEBUGMonoBehaviour
 
         allSpawns = FindObjectsByType<MAP_LadderPointSpawn>(FindObjectsSortMode.None);
 
-        Debug.Log("Running Ladder Spawn!");
+        if (debug){ Debug.Log("Running Ladder Spawn!"); }
 
         for (int i = targetSpawns; i != 0; i--)
         {
-            Debug.Log("Spawning!");
+            if (debug){ Debug.Log("Spawning!"); }
             allSpawns[Random.Range(0,allSpawns.Count()-1)].SpawnLadder();
         }
 
@@ -33,7 +33,7 @@ public class MAP_LadderPointSpawn : DEBUGMonoBehaviour
     {
         if (targetSpawns != 0)
         {
-            Debug.Log("Instantiating!");
+            if (debug){ Debug.Log("Instantiating!"); }
             GameObject newLadder = Instantiate(LPEntrancePrefab,LPEntranceParent);
 
             newLadder.transform.position = transform.position;

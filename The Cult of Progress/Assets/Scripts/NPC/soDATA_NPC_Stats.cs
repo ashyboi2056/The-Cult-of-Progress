@@ -38,6 +38,10 @@ public class soDATA_NPC_Stats : ScriptableObject
 
     [SerializeField] [Label("soDATA_autoJoinList")] private NPC_IDEnums[] soDATA_autoJoinList;
 
+    [Space(10)]
+
+    [SerializeField] [Label("soDATA_conversionAttemptRefreshTime")] private float soDATA_conversionAttemptRefreshTime = 1;
+
     ////
     
 
@@ -62,6 +66,8 @@ public class soDATA_NPC_Stats : ScriptableObject
     public int STAT_startRESDomination => soDATA_startRESDomination;
 
     public NPC_IDEnums[] STAT_autoJoinList => soDATA_autoJoinList;
+
+    public float STAT_conversionAttemptRefreshTime => soDATA_conversionAttemptRefreshTime;
 
     ////
 }

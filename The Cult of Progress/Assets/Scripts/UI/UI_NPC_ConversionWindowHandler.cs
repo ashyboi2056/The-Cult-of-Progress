@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using NaughtyAttributes;
+using System;
 
 [ExecuteAlways]
 public class UI_NPC_ConversionWindowHandler : DEBUGMonoBehaviour
@@ -162,7 +163,7 @@ public class UI_NPC_ConversionWindowHandler : DEBUGMonoBehaviour
     {
         string stanceChoice = stanceDropDown.options[stanceDropDown.value].text;
 
-        return Stance.None;
+        return (Stance)Enum.Parse(typeof(Stance), stanceChoice);
     }
 
     public NPC_LOCALRecruitmentHandler GetHeldNPCData()
@@ -172,7 +173,7 @@ public class UI_NPC_ConversionWindowHandler : DEBUGMonoBehaviour
 
     public void Convert()
     {
-        targetNPCRecruitmentHandler.Convert(playerData, GetStance());
+        StartCoroutine(targetNPCRecruitmentHandler.Convert(playerData, GetStance()));
     }
 
     private void EnableInteractables()

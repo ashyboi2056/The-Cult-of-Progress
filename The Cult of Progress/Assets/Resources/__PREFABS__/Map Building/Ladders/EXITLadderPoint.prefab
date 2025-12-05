@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 432242645
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 2246c06f3d8df694db524a3fa4425de2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -136,6 +136,8 @@ MonoBehaviour:
   ShowDebugOptions: 0
   debug: 0
   isExitLadder: 1
+  isLinkedLadder: 0
+  targetLadder: {fileID: 0}
 --- !u!114 &3081705576924447498
 MonoBehaviour:
   m_ObjectHideFlags: 0

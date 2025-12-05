@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 
-public class UI_ITEM_SelectDropdown : MonoBehaviour
+public class UI_ITEM_SelectDropdown : DEBUGMonoBehaviour
 {
     [SerializeField] private TMP_Dropdown dropdown;
 
@@ -30,6 +30,6 @@ public class UI_ITEM_SelectDropdown : MonoBehaviour
     private void OnDropdownChanged(int index)
     {
         soDATA_ITEM selectedItem = myAvailableItems[index];
-        Debug.Log("Selected Item: " + selectedItem.STAT_itemName);
+        if (debug){ Debug.Log("Selected Item: " + selectedItem.STAT_itemName); }
     }
 }
