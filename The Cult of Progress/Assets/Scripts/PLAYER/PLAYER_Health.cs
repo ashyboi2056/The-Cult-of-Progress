@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
+using System;
 
 public class PLAYER_Health : DEBUGMonoBehaviour
 {
@@ -142,6 +143,12 @@ public class PLAYER_Health : DEBUGMonoBehaviour
     private void DEBUGDamage()
     {
         Damage(DEBUGQueryDamageAmount, DEBUGQueryTargetDamageTestPart);
+    }
+
+    public static BodyPart GetRandomBodyPart()
+    {
+        var values = (BodyPart[])Enum.GetValues(typeof(BodyPart));
+        return values[UnityEngine.Random.Range(0,Enum.GetValues(typeof(BodyPart)).Length)];
     }
 }
 

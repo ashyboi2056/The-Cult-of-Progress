@@ -25,6 +25,8 @@ public class RULES
     
     // STATS RULES //
 
+    public const int RULE_STATS_statPoints = 3;
+
     public const int RULE_STATS_startingIntelligence = 1;
     public const int RULE_STATS_maxIntelligence = 5;
     public const int RULE_STATS_startingCharisma = 1;

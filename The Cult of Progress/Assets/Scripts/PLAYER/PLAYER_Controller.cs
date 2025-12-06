@@ -10,7 +10,12 @@ public class PLAYER_Controller : DEBUGMonoBehaviour
         else {}//Open Menu
     }
 
-    private void InteractWithItemInSlot(int slotIndex)
+    public void OnAttack(InputValue inputValue)
+    {
+        GetComponent<PLAYER_Combat>().Attack();
+    }
+
+    private void UseItemInSlot(int slotIndex)
     {
         var inventory = GetComponent<PLAYER_Inventory>();
 
@@ -47,15 +52,15 @@ public class PLAYER_Controller : DEBUGMonoBehaviour
         }
     }
 
-    public void OnHotkey1(InputValue inputValue) => InteractWithItemInSlot(1);
-    public void OnHotkey2(InputValue inputValue) => InteractWithItemInSlot(2);
-    public void OnHotkey3(InputValue inputValue) => InteractWithItemInSlot(3);
-    public void OnHotkey4(InputValue inputValue) => InteractWithItemInSlot(4);
-    public void OnHotkey5(InputValue inputValue) => InteractWithItemInSlot(5);
-    public void OnHotkey6(InputValue inputValue) => InteractWithItemInSlot(6);
-    public void OnHotkey7(InputValue inputValue) => InteractWithItemInSlot(7);
-    public void OnHotkey8(InputValue inputValue) => InteractWithItemInSlot(8);
-    public void OnHotkey9(InputValue inputValue) => InteractWithItemInSlot(9);
-    public void OnHotkey0(InputValue inputValue) => InteractWithItemInSlot(0);
+    public void OnHotkey1(InputValue inputValue) => UseItemInSlot(1);
+    public void OnHotkey2(InputValue inputValue) => UseItemInSlot(2);
+    public void OnHotkey3(InputValue inputValue) => UseItemInSlot(3);
+    public void OnHotkey4(InputValue inputValue) => UseItemInSlot(4);
+    public void OnHotkey5(InputValue inputValue) => UseItemInSlot(5);
+    public void OnHotkey6(InputValue inputValue) => UseItemInSlot(6);
+    public void OnHotkey7(InputValue inputValue) => UseItemInSlot(7);
+    public void OnHotkey8(InputValue inputValue) => UseItemInSlot(8);
+    public void OnHotkey9(InputValue inputValue) => UseItemInSlot(9);
+    public void OnHotkey0(InputValue inputValue) => UseItemInSlot(0);
 
 }

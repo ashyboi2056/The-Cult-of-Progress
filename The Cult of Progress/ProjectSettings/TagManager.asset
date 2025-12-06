@@ -12,7 +12,7 @@ TagManager:
   - Water
   - UI
   - DiceRolling
-  - 
+  - '[LOCAL] CanBeDamaged'
   - 
   - 
   - 
@@ -64,6 +64,9 @@ TagManager:
     locked: 0
   - name: Items On Floor
     uniqueID: 3580891671
+    locked: 0
+  - name: Enemies
+    uniqueID: 496747525
     locked: 0
   - name: Characters
     uniqueID: 2348788943

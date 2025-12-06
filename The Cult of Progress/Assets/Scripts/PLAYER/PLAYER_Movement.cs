@@ -4,10 +4,9 @@ using NaughtyAttributes;
 
 public class PLAYER_Movement : DEBUGMonoBehaviour
 {
-    
     [Header("Movement Settings")]
     [ShowNonSerializedField]
-    private float moveSpeed = 5f;
+    private static float moveSpeed = 5f;
 
     private Vector2 moveInput;
     private Rigidbody2D rb;
@@ -25,7 +24,6 @@ public class PLAYER_Movement : DEBUGMonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = moveInput * moveSpeed;
+        rb.linearVelocity = moveInput.normalized * moveSpeed;
     }
-
 }

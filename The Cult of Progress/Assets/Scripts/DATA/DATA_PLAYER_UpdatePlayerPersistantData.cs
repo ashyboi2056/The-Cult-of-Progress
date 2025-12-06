@@ -15,7 +15,7 @@ public class UpdatePlayerPersistantData : DEBUGMonoBehaviour
         dataContainer.data = SaveManager.LoadData();
     }
 
-    private void SaveData()
+    public void SaveData()
     {
         SaveManager.SaveData(dataContainer.data);
     }
@@ -23,8 +23,6 @@ public class UpdatePlayerPersistantData : DEBUGMonoBehaviour
     public void SetCharacterName(string newCharacterName)
     {
         dataContainer.data.characterName = newCharacterName;
-
-        SaveData();
     }
 
     public string GetCharacterName()
@@ -35,20 +33,14 @@ public class UpdatePlayerPersistantData : DEBUGMonoBehaviour
     public void SetIntelligence(int newInt)
     {
         dataContainer.data.intelligence = newInt;
-
-        SaveData();
     }
     public void SetCharisma(int newCha)
     {
         dataContainer.data.charisma = newCha;
-
-        SaveData();
     }
     public void SetStrength(int newStr)
     {
         dataContainer.data.strength = newStr;
-
-        SaveData();
     }
 
     public void SetStartingAcc(soDATA_ITEM_Accessory item)
@@ -60,4 +52,8 @@ public class UpdatePlayerPersistantData : DEBUGMonoBehaviour
     {
         dataContainer.cultDataCarrier = cult;
     }
+
+    public int GetIntelligence(){ return dataContainer.data.intelligence; }
+    public int GetCharisma(){ return dataContainer.data.charisma; }
+    public int GetStrength(){ return dataContainer.data.strength; }
 }

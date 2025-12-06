@@ -56,7 +56,8 @@ public class LOGIC_ConversionDiceManager : DEBUGMonoBehaviour
             Destroy(die.gameObject); 
         }
         diceList.Clear();
-        Debug.Log(diceList);
+        
+        if (debug){ Debug.Log(diceList); }
 
         for (int i = intDice; i > 0; i--){ SpawnIntDice(intToBeat); }
         for (int i = chaDice; i > 0; i--){ SpawnChaDice(chaToBeat); }

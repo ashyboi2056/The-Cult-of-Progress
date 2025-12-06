@@ -1057,7 +1057,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &573554152
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1185,6 +1185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 645c1f25fa0258b4a8e84e06b1e3a1de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowDebugOptions: 0
+  debug: 0
   dropdown: {fileID: 573554153}
   myAvailableCults:
   - {fileID: 11400000, guid: 8cf0d33eec52e1f458b80359281908c2, type: 2}
@@ -2524,6 +2526,8 @@ MonoBehaviour:
   ShowDebugOptions: 0
   debug: 0
   LOCAL_CultDropdown: {fileID: 1653109602}
+  LOCAL_ItemDropdown: {fileID: 0}
+  defaultCult: {fileID: 11400000, guid: 8cf0d33eec52e1f458b80359281908c2, type: 2}
 --- !u!4 &1637014145
 Transform:
   m_ObjectHideFlags: 0
@@ -2834,9 +2838,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 645c1f25fa0258b4a8e84e06b1e3a1de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowDebugOptions: 0
+  debug: 0
   dropdown: {fileID: 1653109599}
   myAvailableCults:
-  - {fileID: 11400000, guid: c6e9bb574f3064041b7135fcdc896e39, type: 2}
   - {fileID: 11400000, guid: 8cf0d33eec52e1f458b80359281908c2, type: 2}
 --- !u!1 &1659329083
 GameObject:

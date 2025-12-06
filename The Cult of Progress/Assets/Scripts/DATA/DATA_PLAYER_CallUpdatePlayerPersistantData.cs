@@ -2,10 +2,19 @@ using System;
 using TMPro;
 using UnityEngine;
 
-public class CallUpdatePlayerPersistantData : DEBUGMonoBehaviour
+public class DATA_PLAYER_CallUpdatePlayerPersistantData : DEBUGMonoBehaviour
 {
     [SerializeField] UI_CULT_SelectDropdown LOCAL_CultDropdown;
     [SerializeField] UI_ITEM_SelectDropdown LOCAL_ItemDropdown;
+
+    [Space(10)]
+
+    public soDATA_CULT_Stats defaultCult;
+
+    void Awake()
+    {
+        if (defaultCult != null){ ForceCultDataCarrier(defaultCult); }
+    }
 
     public void SetCharacterName(string newName)
     {
@@ -47,5 +56,35 @@ public class CallUpdatePlayerPersistantData : DEBUGMonoBehaviour
         if (debug){ Debug.Log("Set Cult to: " + cult.STAT_cultName); }
 
         FindFirstObjectByType<UpdatePlayerPersistantData>().SetCultDataCarrier(cult);
+    }
+
+    public void ForceCultDataCarrier(soDATA_CULT_Stats cult)
+    {
+        if (debug){ Debug.Log("Set Cult to: " + cult.STAT_cultName); }
+
+        FindFirstObjectByType<UpdatePlayerPersistantData>().SetCultDataCarrier(cult);
+    }
+
+    public string GetCharacterName()
+    {
+        return FindFirstObjectByType<UpdatePlayerPersistantData>().GetCharacterName();
+    }
+
+    public int GetIntelligence()
+    {
+        return FindFirstObjectByType<UpdatePlayerPersistantData>().GetIntelligence();
+    }
+    public int GetCharisma()
+    {
+        return FindFirstObjectByType<UpdatePlayerPersistantData>().GetCharisma();
+    }
+    public int GetStrength()
+    {
+        return FindFirstObjectByType<UpdatePlayerPersistantData>().GetStrength();
+    }
+
+    public void Save()
+    {
+        FindFirstObjectByType<UpdatePlayerPersistantData>().SaveData();
     }
 }

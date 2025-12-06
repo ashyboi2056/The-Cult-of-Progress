@@ -27,6 +27,11 @@ public class UI_ItemCrafter : DEBUGMonoBehaviour
         if (!QueryCanCraft()) { return; }
         FindFirstObjectByType<LOCAL_PLAYER_FLAG>().GetComponent<PLAYER_Resources>().TakeResources(item.STAT_craftingReq);
 
+        DropItem();
+    }
+
+    public void DropItem()
+    {
         Vector3 playerPos = FindFirstObjectByType<LOCAL_PLAYER_FLAG>().transform.position;
         Vector3 playerFacing = FindFirstObjectByType<LOCAL_PLAYER_FLAG>().transform.up;
         Vector3 spawnPos = playerPos + (0.5f * playerFacing);
