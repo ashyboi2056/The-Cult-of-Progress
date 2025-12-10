@@ -21,6 +21,8 @@ public class RULES
 
     public const int RULE_HP_soulMaxHP = 5;
 
+    public const bool RULE_HP_queryDamageAllAffectsSoul = false;
+
     ////
     
     // STATS RULES //
@@ -49,7 +51,7 @@ public class RULES
     
     // UX RULES //
 
-    public const float RULE_UX_diceResultDelay = 2.5f;
+    public const float RULE_UX_diceResultDelay = 1.5f;
     public const float RULE_UX_diceRandomTorqueMagnitude = 0.00002f;
     public const float RULE_UX_diceRandomMinForceMagnitude = 0.000001f;
     public const float RULE_UX_diceRandomMaxForceMagnitude = 0.000005f;

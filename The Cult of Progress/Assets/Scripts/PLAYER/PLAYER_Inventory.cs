@@ -175,6 +175,29 @@ public class PLAYER_Inventory : DEBUGMonoBehaviour
         return null;
     }
 
+    public void SetItem(int location, soDATA_ITEM item) //Use Carefully
+    {
+        if (location < 10) { inventory[location] = item; }
+        else
+        {
+            switch (location)
+            {
+                case 100: //Outfit Slot
+                   outfitSlot[0] = item;
+                   break;
+                case 200: //Acc 1
+                    accessorySlots[0] = item;
+                   break;
+                case 201: //Acc 2
+                    accessorySlots[1] = item;
+                   break;
+                case 202: //Acc 3
+                    accessorySlots[2] = item;
+                   break;
+            }
+        }
+    }
+
     public bool QuerySlotEmpty(int location)
     {
         if (location < 10)

@@ -3,8 +3,8 @@ using UnityEngine;
 public enum Resource
 {
     None,
-    Books,
     Food,
+    Books,
     Metal,
     Souls,
     Gold

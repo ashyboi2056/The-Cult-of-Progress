@@ -29,7 +29,10 @@ public class PLAYER_Interact : DEBUGMonoBehaviour
         INTERACTABLE nearestInteractable = FindNearestInteractable();
         if (nearestInteractable == null){ return; }
 
+        if (debug){ Debug.Log(nearestInteractable); }
+
         float distance = Vector2.Distance(transform.position, nearestInteractable.transform.position);
+        if (debug){ Debug.Log("Is at distance: " + distance); }
         if (distance <= nearestInteractable.GetInteractRange())
         {
             hasInteractedThisPress = true;

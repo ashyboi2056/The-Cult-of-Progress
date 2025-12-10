@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Termian Genesis
   m_EditorClassIdentifier: 
   soDATA_ritualName: Termian Genesis
-  soDATA_reqItems:
-  - {fileID: 11400000, guid: 3ec2bcfab6a7a674fa54401fb26ec148, type: 2}
-  soDATA_reqNPCs: 01000000
+  soDATA_ritualCompletionTime: 15
+  soDATA_focalItem: {fileID: 11400000, guid: 3ec2bcfab6a7a674fa54401fb26ec148, type: 2}
+  soDATA_focalBound: 01000000
+  soDATA_reqItems: []
+  soDATA_reqBound: 
+  soDATA_OnStartedEFFECTS: []
+  soDATA_OnFailedEFFECTS: []
   soDATA_OnPerformedEFFECTS:
   - {fileID: 11400000, guid: 824df2bac4265ad40b4a53003049cb16, type: 2}

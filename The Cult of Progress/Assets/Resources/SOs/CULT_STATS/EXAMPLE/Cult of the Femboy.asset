@@ -15,4 +15,4 @@ MonoBehaviour:
   soDATA_cultName: The Cult of the Femboy
   soDATA_factionNPCs: 000000000000000000000000
   soDATA_victoryRituals:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 760586e40c15e954783cf16e9ec144ea, type: 2}

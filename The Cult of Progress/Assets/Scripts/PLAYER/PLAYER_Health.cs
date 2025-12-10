@@ -6,6 +6,10 @@ using System;
 
 public class PLAYER_Health : DEBUGMonoBehaviour
 {
+    [SerializeField] private UI_PLAYER_HealthDisplay healthDisplay;
+
+    [Space(10)]
+
     [SerializeField]
     private Dictionary<BodyPart, int> bodyPartHP = new Dictionary<BodyPart, int>()
     {
@@ -99,6 +103,19 @@ public class PLAYER_Health : DEBUGMonoBehaviour
 
     private void ApplyDamage(BodyPart part, int amount)
     {
+        if (part == BodyPart.None){ return; } //Damage Missed!
+        if (part == BodyPart.All)
+        {
+            ApplyDamage(BodyPart.Head, amount);
+            ApplyDamage(BodyPart.Body, amount);
+            ApplyDamage(BodyPart.Arms, amount);
+            ApplyDamage(BodyPart.Legs, amount);
+
+            if (RULES.RULE_HP_queryDamageAllAffectsSoul){ ApplyDamage(BodyPart.Soul, amount); }
+            
+            return;
+        }
+
         bodyPartHP[part] = Mathf.Max(bodyPartHP[part] - amount, 0);
         TriggerUIUpdate(part);
     }
@@ -112,8 +129,11 @@ public class PLAYER_Health : DEBUGMonoBehaviour
     }
 
     [Button]
-    private void UpdateUI()
+    public void UpdateUI()
     {
+        healthDisplay.UpdateUI(bodyPartHP);
+
+        /*
         Head = bodyPartHP[BodyPart.Head];
         Body = bodyPartHP[BodyPart.Body];
         Arms = bodyPartHP[BodyPart.Arms];
@@ -125,6 +145,7 @@ public class PLAYER_Health : DEBUGMonoBehaviour
         armsHPCounter.text = "Arms: " + bodyPartHP[BodyPart.Arms].ToString() + "/" + maxHP[BodyPart.Arms].ToString();
         legsHPCounter.text = "Legs: " + bodyPartHP[BodyPart.Legs].ToString() + "/" + maxHP[BodyPart.Legs].ToString();
         soulHPCounter.text = "Soul: " + bodyPartHP[BodyPart.Soul].ToString() + "/" + maxHP[BodyPart.Soul].ToString();
+        */
     }
 
     // Debug Tools

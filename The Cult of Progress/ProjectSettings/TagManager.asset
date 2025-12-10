@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - ItemDropSpot
   layers:
   - Default
   - TransparentFX
@@ -50,6 +51,9 @@ TagManager:
   - name: Ladder Points
     uniqueID: 432242645
     locked: 0
+  - name: Storage
+    uniqueID: 4035311475
+    locked: 0
   - name: Crafters
     uniqueID: 3796995037
     locked: 0
@@ -73,6 +77,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 4156619247
+    locked: 0
+  - name: Storage UI
+    uniqueID: 1660707143
     locked: 0
   - name: Mini Canvas UI
     uniqueID: 2738609997

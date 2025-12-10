@@ -17,10 +17,10 @@ public class soDATA_ITEM : ScriptableObject
     [SerializeField] 
     private GenericDictionary<Resource, int> soDATA_craftingReq = new GenericDictionary<Resource, int>()
     {
-        {Resource.Books, 0},
         {Resource.Food, 0},
-        {Resource.Gold, 0},
+        {Resource.Books, 0},
         {Resource.Metal, 0},
+        {Resource.Gold, 0},
         {Resource.Souls, 0}
     };
 

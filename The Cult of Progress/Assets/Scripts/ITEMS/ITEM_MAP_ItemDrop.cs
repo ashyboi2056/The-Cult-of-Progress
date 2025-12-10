@@ -30,5 +30,22 @@ public class ITEM_MAP_ItemDrop : DEBUGMonoBehaviour
         item = newItem;
 
         UpdateUI();
+
+        // Check for overlap with ItemDropSpots
+        Collider2D[] hits = Physics2D.OverlapPointAll(transform.position);
+        foreach (var hit in hits)
+        {
+            if (hit.CompareTag("ItemDropSpot"))
+            {
+                transform.SetParent(hit.transform);
+                transform.localPosition = Vector3.zero;
+
+                
+                break; // stop after first match
+            }
+        }
+
+        if (transform.parent.tag == "ItemDropSpot"){ GetComponent<Collider2D>().isTrigger = true; }
+        else { GetComponent<Collider2D>().isTrigger = false; }
     }
 }

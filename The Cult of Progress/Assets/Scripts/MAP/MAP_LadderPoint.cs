@@ -63,9 +63,9 @@ public class MAP_LadderPoint : DEBUGMonoBehaviour
         entranceLadderID = -1;
     }
 
-    private void SetupLinkedLadder()
+    public void SetupLinkedLadder(GameObject newLinkedLadder = null)
     {
-
+        if (newLinkedLadder != null){ targetLadder = newLinkedLadder; }
 
         entranceLadderID = -2;
     }
